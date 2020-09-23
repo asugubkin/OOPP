@@ -92,7 +92,7 @@ void start1()
 	}
 
 	{
-		//return;
+		return;
 		cout << "=============" << endl;
 		B b(1);
 		D d(2);
@@ -115,7 +115,7 @@ void start1()
 
 	{
 
-		//return;
+		return;
 
 		cout << "=============" << endl;
 		B* pd = new D;
@@ -125,7 +125,7 @@ void start1()
 	}	
 	
 	{
-		//return;
+		return;
 		cout << "=============" << endl;
 		B b;
 		D d;
@@ -415,7 +415,7 @@ class Base : public CObject
 public:
 	DECLARE_SERIAL(Base)
 
-	int m_I;
+	int m_I = 0;
 
 	Base(int I):m_I(I){}
 
@@ -439,7 +439,7 @@ public:
 		}
 	}
 };
-IMPLEMENT_SERIAL(Base, CObject, 0)
+IMPLEMENT_SERIAL(Base, CObject, 1)
 
 class Derived : public Base
 {
@@ -447,6 +447,7 @@ public:
 	DECLARE_SERIAL(Derived)
 
 	CString m_S;
+	int m_K;
 
 	Derived(int I)
 		:Base(I)
@@ -468,20 +469,21 @@ public:
 		if (ar.IsStoring())
 		{
 			ar << m_S;
+			ar << m_K;
 		}
 		else
 		{
+			ar >> m_S;
 			{
 				if (ar.GetObjectSchema() > 0)
 				{
-
+					ar >> m_K;
 				}
 			}
-			ar >> m_S;
 		}
 	}
 };
-IMPLEMENT_SERIAL(Derived, Base, VERSIONABLE_SCHEMA | 0)
+IMPLEMENT_SERIAL(Derived, Base, VERSIONABLE_SCHEMA | 1)
 
 void start5()
 {
@@ -499,7 +501,7 @@ void start5()
 	{
 		o->f();
 	}
-	// return;
+	return;
 	cout << "=============" << endl;
 
 	{

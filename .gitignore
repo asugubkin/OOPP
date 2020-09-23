@@ -357,6 +357,6 @@ MigrationBackup/
 .ionide/
 
 export.cmd
-sysprog.zip
+*.zip
 Template
 *.pdf
