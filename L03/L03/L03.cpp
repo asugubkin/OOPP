@@ -54,7 +54,7 @@ template <class T> inline T max2(T a, T b)
 }
 
 #pragma region Explicit
-inline char* max22(char* a, char* b)
+inline char* max2(char* a, char* b)
 {
 	return (strcmp(a,b) > 0) ? a : b;
 }
@@ -69,6 +69,7 @@ template <class List> inline void ClearList(List& lst)
 
 void start1()
 {
+	return;
 	int a = 1, b = 2;
 	string s1("abc"), s2("qwe");
 	char sz1[] = "abc", sz2[] = "qwe", sz3[] = "cde";
@@ -95,7 +96,7 @@ template <class T, typename... Args> inline void writeln(T& value, const Args & 
 
 void start2()
 {
-	// return;
+	return;
 	string s("asd");
 	writeln("------------------", 1, "s = ", s);
 }
@@ -492,7 +493,7 @@ namespace Strict
 	};
 }
 
-void start8()
+void start8() // noexcept noexcept(true) throw()
 {
 	return;
 	writeln("------------------ 8");
@@ -500,7 +501,7 @@ void start8()
 	{
 		Strict::Array<int> a(10);
 		Strict::Array<int> b(50);
-		b = a;
+		b = a = 0;
 		Strict::Array<int> c(5);
 		c = 10;
 		b += 5; // b.operator+=(5)
@@ -509,8 +510,8 @@ void start8()
 		c -= 1; // operator-=(ñ, 1)
 		writeln(a, b, c);
 		
-		if (true)
-			throw 1;
+//		if (true)
+//			throw 1;
 		
 		for (int i = 0; i < 100; ++i)
 		{
@@ -583,7 +584,7 @@ namespace Exceptions
 
 void start9()
 {
-	return;
+	// return;
 	writeln("------------------ 9");
 	try
 	{
