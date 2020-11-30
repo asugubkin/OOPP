@@ -524,6 +524,50 @@ namespace SharpConsole
         }
         #endregion
 
+        #region Templates
+
+        static void ft<T>(T t)
+        {
+            Console.WriteLine(t);
+        }
+
+        class Point<T>
+        {
+            public T x;
+            public T y;
+            public Point()
+            {
+            }
+
+            public Point(T X, T Y)
+            {
+                x = X;
+                y = Y;
+            }
+
+            public void Reset()
+            {
+                x = default(T);
+                y = default(T);
+            }
+            public override string ToString()
+            {
+                return $"[{x},{y}]";
+            }
+        }
+
+        static void Templates()
+        {
+            Console.WriteLine("Templates");
+            var p1 = new Point<double>();
+            ft(p2);
+            var p2 = new Point<int>(5, 6);
+            ft(p2);
+            p2.Reset();
+            ft(p2);
+        }
+        #endregion
+
         #region Delegates
 
         public delegate void SimpleDelegate();
@@ -581,9 +625,16 @@ namespace SharpConsole
             var fout = new Action<string>(fdout);
             fout(fin());
 
-            // public delegate TResult Func<out TResult, in >();
+            // public delegate TResult Func<out TResult>();
+            // public delegate TResult Func<in T,out TResult>(T arg);
+            // public delegate TResult Func<in T1,in T2, out TResult>(T arg);
+            // ...
+            // public delegate void Action();
+            // public delegate void Action<in T>(T obj);
+            // public delegate void Action<in T1, in T2>(T1 arg1, T2 arg2);
+            // ...
             // public delegate bool Predicate<in T>(T obj);
-            // EventHandler<T>, (object, T: EventArgs)
+            // public delegate void EventHandler<TEventArgs>(object? sender, TEventArgs e);
 
         }
         #endregion
@@ -675,50 +726,6 @@ namespace SharpConsole
                 o2.f();            
             }
             Console.WriteLine("IDisposable done");
-        }
-        #endregion
-
-        #region Templates
-
-        static void ft<T>(T t)
-        {
-
-        }
-
-        class Point<T>
-        {
-            public T x;
-            public T y;
-            public Point()
-            {
-            }
-
-            public Point(T X, T Y)
-            {
-                x = X;
-                y = Y;
-            }
-
-            public void Reset()
-            {
-                x = default(T);
-                y = default(T);
-            }
-            public override string ToString()
-            {
-                return $"[{x},{y}]";
-            }
-        }
-
-        static void Templates()
-        {
-        	Console.WriteLine("Templates");
-            var p1 = new Point<double>();
-            Console.WriteLine(p1);
-            var p2 = new Point<int>(5, 6);
-            Console.WriteLine(p2);
-            p2.Reset();
-            Console.WriteLine(p2);
         }
         #endregion
 
@@ -940,10 +947,10 @@ namespace SharpConsole
 //            Properties();
 //            Inheritance();
 //            Interfaces();
+//            Templates();
 //            Delegates();
 //            Exceptions();
 //            IDisposable();
-//            Templates();
 //            IO();
 //            Serialization();
         }
