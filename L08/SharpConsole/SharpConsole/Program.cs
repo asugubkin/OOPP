@@ -17,12 +17,16 @@ namespace SharpConsole
     public class Program
     {
 
-        #region Strings
-        static void Strings()
+        #region BaseTypes
+        static void BaseTypes()
         {
-            int i = 1;
+            int i = 1; //System.Int32
+            bool b = true;
+            double d = 3;
+            Console.WriteLine(1.ToString());
             Console.WriteLine("i = {0}", i);
             string s = String.Format("i = {0}", i);
+            
             s = $"i = {i}";
             s = @"
                 First line
@@ -30,6 +34,7 @@ namespace SharpConsole
                 {s}
             ";
             Console.WriteLine(s);
+
             s = $"i = {i}";
             s = $@"
                 First line
@@ -37,6 +42,8 @@ namespace SharpConsole
                 {s}
             ";
             Console.WriteLine(s);
+
+            s += "aaa";
 
             var sb1 = new StringBuilder(s);
             var sb2 = new StringBuilder(256);
@@ -106,7 +113,7 @@ namespace SharpConsole
                 }
             }
             Console.WriteLine();
-//            string? s3;
+            // string? s3;
         }
 
         #endregion
@@ -157,7 +164,7 @@ namespace SharpConsole
 
         #region Structures
 
-        struct MyStruct
+        partial struct MyStruct
         {
             public int i;
             public string s;
@@ -165,11 +172,17 @@ namespace SharpConsole
             {
                 Console.WriteLine($"i = {i}, s = {s}");
             }
-            public MyStruct(int I, string S)
+            public MyStruct(int I, string s)
+                :this()
             {
                 i = I;
-                s = S;
+                this.s = s;
             }
+        }
+
+        partial struct MyStruct
+        {
+            public int j;
         }
 
         static void fs(MyStruct s)
@@ -185,6 +198,7 @@ namespace SharpConsole
             MyStruct s1;
             s1.i = 12345;
             s1.s = "qwerty";
+            s1.j = 12345;
             s1.f();
 
             MyStruct s2 = new MyStruct();
@@ -194,6 +208,9 @@ namespace SharpConsole
             s3.f();
             fs(s3);
             s3.f();
+
+            MyStruct s4 = new MyStruct { i = 6, s = "???" };
+            s4.f();
         }
         #endregion
 
@@ -332,9 +349,9 @@ namespace SharpConsole
                 k = K;
             }
 
-            public void SetR(int r)
+            public void SetR(double r)
             {
-                k = r * 100;
+                k = (int)(r * 100);
             }
             public int GetR()
             {
@@ -344,11 +361,11 @@ namespace SharpConsole
             {
                 get
                 {
-                    return k / 100;
+                    return GetR();
                 }
                 set
                 {
-                    k = (int)(value * 100);
+                    SetR(value);
                 }
             }
 
@@ -908,21 +925,21 @@ namespace SharpConsole
 
         static void Main(string[] args)
         {
-            Strings();
-            Functions();
-            Arrays();
-            Structures();
-            Classes();
-            Operators();
-            Properties();
-            Inheritance();
-            Interfaces();
-            Delegates();
-            Exceptions();
-            IDisposable();
-            Templates();
-            IO();
-            Serialization();
+            BaseTypes();
+//            Functions();
+//            Arrays();
+//            Structures();
+//            Classes();
+//            Operators();
+//            Properties();
+//            Inheritance();
+//            Interfaces();
+//            Delegates();
+//            Exceptions();
+//            IDisposable();
+//            Templates();
+//            IO();
+//            Serialization();
         }
     }
 }
