@@ -581,9 +581,10 @@ namespace SharpConsole
             var fout = new Action<string>(fdout);
             fout(fin());
 
+            // public delegate TResult Func<out TResult, in >();
             // public delegate bool Predicate<in T>(T obj);
             // EventHandler<T>, (object, T: EventArgs)
-    
+
         }
         #endregion
 
@@ -678,6 +679,11 @@ namespace SharpConsole
         #endregion
 
         #region Templates
+
+        static void ft<T>(T t)
+        {
+
+        }
 
         class Point<T>
         {
