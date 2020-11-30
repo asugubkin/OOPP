@@ -683,6 +683,25 @@ namespace SharpConsole
                 Console.WriteLine("DisposableClass.f(): " + s);
             }
 
+            ~DisposableClass()
+            {
+                Console.WriteLine("DisposableClass.~DisposableClass(): " + s);
+                Clean(false);
+            }
+            /*
+            protected override void Finalize()
+            {
+                try
+                {
+                    ~DisposableClass();
+                }
+                finally
+                {
+                    base.Finalize();
+                }
+            }
+            */
+
             bool bDisposed = false;
             void Clean(bool bDisposing)
             {
@@ -698,11 +717,6 @@ namespace SharpConsole
                     }
                     bDisposed = true;
                 }
-            }
-            ~DisposableClass()
-            {
-                Console.WriteLine("DisposableClass.~DisposableClass(): " + s);
-                Clean(false);
             }
             public void Dispose()
             {
