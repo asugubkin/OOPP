@@ -560,7 +560,7 @@ namespace SharpConsole
         {
             Console.WriteLine("Templates");
             var p1 = new Point<double>();
-            ft(p2);
+            ft(p1);
             var p2 = new Point<int>(5, 6);
             ft(p2);
             p2.Reset();
