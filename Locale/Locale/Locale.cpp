@@ -14,7 +14,7 @@ using namespace std;
 string Console1()
 {
 	setlocale(LC_ALL, ".1251");
-	SetConsoleCP(1251);
+//	SetConsoleCP(1251);
 //	SetConsoleOutputCP(1251);
 //	cout << GetConsoleCP() << endl;
 //	cout << GetConsoleOutputCP() << endl;
@@ -32,7 +32,7 @@ string Console2()
 	setlocale(LC_ALL, ".1251");
 	cout << "¬ведите строку" << endl;
 	setlocale(LC_ALL, ".866");
-
+	SetConsoleCP(1251);
 	//	CharToOemBuff
 	//	OemToCharBuff
 
@@ -43,7 +43,7 @@ string Console2()
 
 	string s;
 	cin >> s;
-	cout << s << endl;
+ 	cout << s << endl;
 	return s;
 }
 
