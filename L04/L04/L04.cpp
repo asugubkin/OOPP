@@ -128,6 +128,23 @@ void PrinterInt(ofstream& out, int i)
 	out << i << endl;
 }
 
+/*
+class student
+{
+public:
+	void draw(CDC* pDC, int& y);
+};
+
+class group
+{
+	vector<shared_ptr<student>> students;
+	void draw(CDC* pDC, int& y)
+	{
+		for_each(students.begin(), students.end(), bind(&student::draw, placeholders::_1, pDC, ref(y)));
+	}
+};
+*/
+
 void start2()
 {
 	return;
